@@ -7,11 +7,9 @@ It uses a fork of [inspect.lua], adapted to Minetest (can dump userdata).
 ## Example
 
 ```lua
-minetest.register_on_punchnode(
-  function(pos, node, player, pointed_thing)
-    log {[node.name] = minetest.registered_nodes[node.name].groups}
-  end
-)
+minetest.register_on_punchnode(function(_, node)
+  log {[node.name] = minetest.registered_nodes[node.name].groups}
+end)
 ```
 
 ---
