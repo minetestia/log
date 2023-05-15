@@ -2,6 +2,16 @@
 
 Dump any lua variables in human-readable format and log them.
 
+## Example
+
+```lua
+minetest.register_on_punchnode(
+  function(pos, node, player, pointed_thing)
+    log {[node.name] = minetest.registered_nodes[node.name].groups}
+  end
+)
+```
+
 ---
 
 This mod was created in [Minetestia Forge].

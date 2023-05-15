@@ -19,9 +19,9 @@ end
 local inspect = require "inspect.lua"
 
 ---@param vars table
----@param level mf.LogLevel|nil Default: `0`.
 ---@param depth integer|nil Default: `0`.
-function log(vars, level, depth)
+---@param level mf.LogLevel|nil Default: `0`.
+function log(vars, depth, level)
   level = level or 0
   if type(level) == "number" then level = log_levels[level] end
   level = level --[[@as string]]
@@ -32,22 +32,6 @@ function log(vars, level, depth)
   local l = mt.log
   local d = { depth = depth }
   for name, var in pairs(vars) do
-    l(level, ("[%s]"):format(inspect(name, d)))
-    l(level, inspect(var, d) .. "\n\n")
+    l(level, ("[%s]: %s \n\n"):format(inspect(name, d), inspect(var, d)))
   end
 end
-
---[[
-
-minetest.register_on_mods_loaded(function() end)
-
-minetest.register_on_joinplayer(
-  function(player)
-    log({
-      wielded = player:get_wielded_item(),
-      chest = mt.registered_nodes["default:chest"],
-    }, 0, 0)
-  end
-)
-
-]]
