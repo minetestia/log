@@ -37,12 +37,17 @@ function log(vars, level, depth)
   end
 end
 
+--[[
+
 minetest.register_on_mods_loaded(function() end)
 
-minetest.register_on_joinplayer(function(player)
-  log({
-    minetest = minetest,
-    -- wielded = player:get_wielded_item(),
-    -- chest = mt.registered_nodes["default:chest"],
-  }, 0, 2)
-end)
+minetest.register_on_joinplayer(
+  function(player)
+    log({
+      wielded = player:get_wielded_item(),
+      chest = mt.registered_nodes["default:chest"],
+    }, 0, 0)
+  end
+)
+
+]]
