@@ -1,3 +1,6 @@
+# THIS REPO IS OUTDATED
+Moved here: <https://notabug.org/minetestia/log>
+
 # Log
 
 Dump any lua variables in human-readable format and log them.
